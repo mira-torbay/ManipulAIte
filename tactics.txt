@@ -4,9 +4,11 @@ Please categorize the information you add for clarity's sake (see above point ab
 
 Tactic 1: Create and emotional response in the reader rather than a rational one
     - "Loaded" language -- hyperbole, emotional vocabularity
+        - Emotional language models:
     - Demonizing an enemy or hero-izing a (usually political) figure
         - Attempt to raise levels of anger and admriation
         - Pejorative name-calling
+        - Model: toxic-bert
 
 Tactic 2: Reduce trust in reliable sources
 
