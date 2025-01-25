@@ -58,11 +58,50 @@
             color: #777;
             margin-top: 1em;
         }
+        .loading-bar {
+            display: none;
+            width: 100%;
+            height: 10px;
+            background-color: #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        .loading-bar div {
+            width: 0;
+            height: 100%;
+            background-color: #007BFF;
+            animation: loading 2s linear forwards;
+        }
+        @keyframes loading {
+            to {
+                width: 100%;
+            }
+        }
+        .complete-message {
+            display: none;
+            font-size: 1em;
+            color: #007BFF;
+            margin-top: 10px;
+        }
     </style>
     <script>
         function storeInput() {
             const inputText = document.getElementById('user-input').value;
             console.log(inputText);
+
+            const loadingBar = document.querySelector('.loading-bar');
+            const completeMessage = document.querySelector('.complete-message');
+
+            // Show loading bar
+            loadingBar.style.display = 'block';
+            completeMessage.style.display = 'none';
+
+            // Simulate loading
+            setTimeout(() => {
+                loadingBar.style.display = 'none';
+                completeMessage.style.display = 'block';
+            }, 2000);
         }
     </script>
 </head>
@@ -72,6 +111,10 @@
         <h2>Attempt to Identify Propaganda and Manipulative Language With AI</h2>
         <input id="user-input" type="text" placeholder="Enter your text here">
         <button onclick="storeInput()">Assess</button>
+        <div class="loading-bar">
+            <div></div>
+        </div>
+        <p class="complete-message">Loading complete! Your input has been processed.</p>
         <p>[additional description goes here]</p>
     </div>
 </body>
