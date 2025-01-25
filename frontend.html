@@ -59,13 +59,19 @@
             margin-top: 1em;
         }
     </style>
+    <script>
+        function storeInput() {
+            const inputText = document.getElementById('user-input').value;
+            console.log(inputText);
+        }
+    </script>
 </head>
 <body>
     <div class="container">
         <h1>ManipulAI</h1>
         <h2>Attempt to Identify Propaganda and Manipulative Language With AI</h2>
-        <input type="text" placeholder="Enter text to assess here">
-        <button>Assess</button>
+        <input id="user-input" type="text" placeholder="Enter your text here">
+        <button onclick="storeInput()">Assess</button>
         <p>[additional description goes here]</p>
     </div>
 </body>
