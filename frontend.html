@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@
             min-height: 100vh;
             background-color: #f4f4f9;
         }
+
         .container {
             text-align: center;
             padding: 20px;
@@ -24,15 +26,18 @@
             max-width: 400px;
             width: 100%;
         }
+
         h1 {
             font-size: 2em;
             margin-bottom: 0.5em;
         }
+
         h2 {
             font-size: 1.5em;
             margin-bottom: 1em;
             color: #555;
         }
+
         input[type="text"] {
             padding: 10px;
             width: calc(100% - 24px);
@@ -40,24 +45,28 @@
             border: 1px solid #ddd;
             border-radius: 6px;
         }
+
         button {
             padding: 10px 20px;
             border: none;
-            background-color: #007BFF;
+            background-color: #8c00ff;
             color: white;
             border-radius: 6px;
             font-size: 1em;
             cursor: pointer;
             transition: background-color 0.3s;
         }
+
         button:hover {
-            background-color: #0056b3;
+            background-color: #57009e;
         }
+
         p {
             font-size: 0.9em;
             color: #777;
             margin-top: 1em;
         }
+
         .loading-bar {
             display: none;
             width: 100%;
@@ -67,22 +76,43 @@
             overflow: hidden;
             margin: 20px 0;
         }
+
         .loading-bar div {
             width: 0;
             height: 100%;
-            background-color: #007BFF;
+            background-color: #8c00ff;
             animation: loading 2s linear forwards;
         }
+
         @keyframes loading {
             to {
                 width: 100%;
             }
         }
+
         .complete-message {
             display: none;
             font-size: 1em;
-            color: #007BFF;
+            color: #8c00ff;
             margin-top: 10px;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, white, #8c00ff);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: sparkle-animation 0.7s ease-out forwards;
+            box-shadow: 0 0 8px #d4a0ff;
+        }
+
+        @keyframes sparkle-animation {
+            to {
+                opacity: 0;
+                transform: scale(1.5);
+            }
         }
     </style>
     <script>
@@ -92,6 +122,7 @@
 
             const loadingBar = document.querySelector('.loading-bar');
             const completeMessage = document.querySelector('.complete-message');
+            const button = document.querySelector('button'); // Add button reference here
 
             // Show loading bar
             loadingBar.style.display = 'block';
@@ -101,10 +132,62 @@
             setTimeout(() => {
                 loadingBar.style.display = 'none';
                 completeMessage.style.display = 'block';
+
+                // Check the input text for color conditions
+                if (inputText.toLowerCase().includes("red")) {
+                    document.body.style.backgroundColor = "#ab3044";
+                    button.style.backgroundColor = "#6b1e2b";
+                    completeMessage.style.color = "#6b1e2b";
+                    updateSparkleColor("red");
+                } else if (inputText.toLowerCase().includes("green")) {
+                    document.body.style.backgroundColor = "#30ab69";
+                    button.style.backgroundColor = "#1e6b42";
+                    completeMessage.style.color = "#1e6b42";
+                    updateSparkleColor("green");
+                } else {
+                    document.body.style.backgroundColor = ""; // Keep default background
+                    button.style.backgroundColor = "#8c00ff"; // Reset button color
+                    completeMessage.style.color = "#8c00ff"; // Reset message color
+                    updateSparkleColor("default");
+                }
             }, 2000);
         }
+
+        document.addEventListener('mousemove', (event) => {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = `${event.pageX}px`;
+            sparkle.style.top = `${event.pageY}px`;
+            document.body.appendChild(sparkle);
+
+            setTimeout(() => {
+                sparkle.remove();
+            }, 700);
+        });
+
+        function updateSparkleColor(color) {
+            const style = document.createElement('style');
+            style.id = 'sparkle-color';
+
+            if (color === "red") {
+                style.innerHTML = `.sparkle { background: radial-gradient(circle, white, #6b1e2b); box-shadow: 0 0 8px rgba(255, 0, 0, 0.8); }`;
+            } else if (color === "green") {
+                style.innerHTML = `.sparkle { background: radial-gradient(circle, white, #1e6b42); box-shadow: 0 0 8px rgba(0, 255, 0, 0.8); }`;
+            } else {
+                style.innerHTML = `.sparkle { background: radial-gradient(circle, white, #8c00ff); box-shadow: 0 0 8px #d4a0ff; }`;
+            }
+
+            const existingStyle = document.getElementById('sparkle-color');
+            if (existingStyle) {
+                existingStyle.replaceWith(style);
+            } else {
+                document.head.appendChild(style);
+            }
+        }
+
     </script>
 </head>
+
 <body>
     <div class="container">
         <h1>ManipulAI</h1>
@@ -118,4 +201,5 @@
         <p>[additional description goes here]</p>
     </div>
 </body>
+
 </html>
