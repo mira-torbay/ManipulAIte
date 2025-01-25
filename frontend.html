@@ -136,6 +136,7 @@
             }
         }
     </style>
+    <script src="predictionResult.js"></script>
     <script>
         function storeInput() {
             const inputText = document.getElementById('user-input').value;
@@ -149,13 +150,16 @@
             loadingBar.style.display = 'block';
             completeMessage.style.display = 'none';
 
-            // Simulate loading
+            // Definitely a very real loading bar
             setTimeout(() => {
                 loadingBar.style.display = 'none';
                 completeMessage.style.display = 'block';
 
+                const prediction = 1; // Example value: set to 0 or 1 based on your logic
+                displayPredictionHeading(prediction);
+
                 // Check the input text for color conditions
-                if (inputText.toLowerCase().includes("red")) {
+                if (prediction==1) {
                     document.body.style.backgroundColor = "#ab3044";
                     button.style.backgroundColor = "#6b1e2b";
                     completeMessage.style.color = "#6b1e2b";
@@ -210,17 +214,22 @@
 </head>
 
 <body>
-    <div class="container">
-        <h1>ManipulAIte</h1>
-        <h2>Attempt to Identify Propaganda and Manipulative Language With AI</h2>
-        <input id="user-input" type="text" placeholder="Enter your text here">
-        <button onclick="storeInput()">Assess</button>
-        <div class="loading-bar">
-            <div></div>
+    <div class="wrapper">
+        <div id="prediction-heading-container"></div>
+        <div class="container">
+            <h1>ManipulAIte</h1>
+            <h2>Attempt to Identify Propaganda and Manipulative Language With AI</h2>
+            <textarea id="user-input" rows="4" cols="50" placeholder="Enter your text here"></textarea>
+            <button onclick="storeInput()">Assess</button>
+            <div class="loading-bar">
+                <div></div>
+            </div>
+            <p class="complete-message">Loading complete! Your input has been processed.</p>
+            <p>The text you input into the above box will be scanned by several machine learning models to assess signs of propaganda and manipulation tactics.</p>
+            <p>Disclaimer: This site is not a replacement for critical thinking or common sense. Like anything, it is susceptible to errors. Please use your brain.</p>
         </div>
-        <p class="complete-message">Loading complete! Your input has been processed.</p>
-        <p>[additional description goes here]</p>
     </div>
 </body>
+
 
 </html>
