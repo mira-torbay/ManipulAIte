@@ -4,10 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ManipulAI</title>
+    <title>ManipulAIte</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Special Elite', serif;
             margin: 0;
             padding: 0;
             display: flex;
@@ -17,18 +20,36 @@
             background-color: #f4f4f9;
         }
 
+        .special-elite-regular {
+            font-family: "Special Elite", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
         .container {
             text-align: center;
             padding: 20px;
             background: white;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 50vw;
+            /* Set width to 50% of the viewport width */
+            aspect-ratio: 1 / 1;
+            /* Keep aspect ratio square */
             max-width: 400px;
-            width: 100%;
+            /* Optional: limit maximum size */
+            min-width: 200px;
+            /* Optional: limit minimum size */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
+
 
         h1 {
             font-size: 2em;
+            letter-spacing: 1px;
             margin-bottom: 0.5em;
         }
 
@@ -190,7 +211,7 @@
 
 <body>
     <div class="container">
-        <h1>ManipulAI</h1>
+        <h1>ManipulAIte</h1>
         <h2>Attempt to Identify Propaganda and Manipulative Language With AI</h2>
         <input id="user-input" type="text" placeholder="Enter your text here">
         <button onclick="storeInput()">Assess</button>
