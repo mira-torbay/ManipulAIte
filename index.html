@@ -122,6 +122,8 @@
             font-size: 1em;
             color: #8c00ff;
             margin-top: 10px;
+            transition: opacity 4s ease-out; /* Add transition for fade-out effect */
+            opacity: 1; /* Default opacity */
         }
 
         .sparkle {
@@ -154,12 +156,21 @@
 
             // Show loading bar
             loadingBar.style.display = 'block';
+            completeMessage.style.opacity = '1';    // Reset opacity
             completeMessage.style.display = 'none';
 
             // Definitely a very real loading bar
             setTimeout(() => {
                 loadingBar.style.display = 'none';
                 completeMessage.style.display = 'block';
+
+                // Fade out the complete message
+            setTimeout(() => {
+                completeMessage.style.opacity = '0'; // Start fading out
+                setTimeout(() => {
+                    completeMessage.style.display = 'none'; // Hide the element after fade-out
+                }, 4000); // Wait for fade-out duration
+            }, 2000); // Delay before starting fade-out
 
 
                 // var prediction = -1;
