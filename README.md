@@ -2,7 +2,7 @@
 
 
 
-**ManipulAlte** is an AI-driven solution which could detect and analyze bias, misinformation, and propaganda in content(s) provided by the user. Through Hugging Face models `emotion-english-distilroberta-basetoxic-bert` and `Minej/bert-base-personality`, the system will be able to identify patterns that implies biased or misleading narratives. 
+**ManipulAlte** is an AI-driven solution which could detect and analyze bias, misinformation, and propaganda in content(s) provided by the user. Through Hugging Face models, the system will be able to identify patterns that implies biased or misleading narratives. 
 
 ## Purpose
 ManipulAlte aims to empower users with tools to help differentiate between objective truth and false narratives throughout various forms of content. 
