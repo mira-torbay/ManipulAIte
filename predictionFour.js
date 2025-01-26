@@ -1,4 +1,4 @@
-function displayPredictionHeading(prediction = 1, emotion, toxicity, contradiction, entailment) {
+function displayPredictionHeading(prediction, emotion, toxicity, contradiction, entailment) {
     // Remove existing prediction heading if present
     const existingHeading = document.querySelector('.prediction-heading');
     if (existingHeading) {
@@ -12,13 +12,10 @@ function displayPredictionHeading(prediction = 1, emotion, toxicity, contradicti
     // Create the central prediction heading
     const heading = document.createElement('h2');
     heading.className = 'prediction-heading';
-    heading.textContent = (prediction === 1) 
-        ? "Likely Manipulative" 
-        : (prediction === 0) 
-        ? "Likely Not Manipulative" 
-        : "";  // Set to empty string if prediction is neither 1 nor 0
+    heading.textContent = (prediction >= 0.5) 
+        ? "Likely Manipulative" : "Likely Not Manipulative";
     heading.style.textAlign = 'center';
-    heading.style.color = prediction === 1 ? 'red' : 'green';
+    heading.style.color = prediction >= 0.5 ? 'red' : 'green';
     heading.style.marginBottom = '10px';
 
     // Insert the prediction heading above the container
