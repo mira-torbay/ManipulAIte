@@ -17,3 +17,11 @@ result = classifier(sequence_to_classify, candidate_labels)
 print(f"Sequence: {result['sequence']}")
 for label, score in zip(result['labels'], result['scores']):
     print(f"{label}: {score:.4f}")
+
+# Find the label with the highest score
+max_score = max(result['scores'])
+max_label = result['labels'][result['scores'].index(max_score)]
+
+# Print the highest value and corresponding label
+print(f"Highest value: {max_score:.4f}")
+print(f"Label with highest value: {max_label}")
