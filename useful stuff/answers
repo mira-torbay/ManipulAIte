@@ -1,1 +1,20 @@
+## Inspiration
+We were interested in the effect of propaganda on modern life and politics and wanted to develop a way for people to identify it more easily.
 
+## What it does
+ManipulAIte combines 3 machine learning models to detect 4 common signs of propaganda: illogical statements, contradictions, toxic or offensive language and excessively emotive language.
+
+## How we built it
+We used 3 different AI models from the website huggingface.co. With these models we then used github and our tech skills.
+
+## Challenges we ran into
+learning how to fine tune pretrained algorithms.
+
+## Accomplishments that we're proud of
+finishing a website application that works correctly
+
+## What we learned
+how to tune pretrained models
+
+## What's next for ManipulAIte
+If we had more time we would expand our models and account for more manipulation techniques
