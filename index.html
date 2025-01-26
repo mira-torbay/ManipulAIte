@@ -161,7 +161,15 @@
                 loadingBar.style.display = 'none';
                 completeMessage.style.display = 'block';
 
-                const prediction = 1
+                var prediction = -1;
+                if(inputText.toLowerCase().includes("red")){
+                    prediction = 1;
+                }else if(inputText.toLowerCase().includes("green")){
+                    prediction = 0;
+                }else{
+                    prediction = -1;
+                }
+
                 // Send input to Flask server
                 var msg = document.getElementById("user-input").value;
                 const url = "/assess?" + new URLSearchParams({msg})
