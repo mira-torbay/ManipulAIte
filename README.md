@@ -9,7 +9,6 @@
 
 ### Programming Language 
 - HTML
-- CSS
 - Javascript
 - Python
   
