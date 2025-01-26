@@ -3,15 +3,13 @@
 
 
 
-**ManipulAlte** is an AI-driven solution which could detect and analyze bias, misinformation, and propaganda in content(s) provided by the user. Through pre-trained Hugging Face models, and our own bias-classifying model that we have trained using a JSON data, ManipuAlte is able to analyze text and find patterns that correlate to ulterior motives behind it. 
-
-## Purpose
-ManipulAlte aims to empower day-to-day users with tools to help differentiate between objective truth and false narratives throughout various forms of content. By doing so, we can 
+**ManipulAlte** is an AI-driven solution which could detect and analyze bias, misinformation, and propaganda in content(s) provided by the user. Through pre-trained Hugging Face models and our own bias-classifying model that we have trained using a JSON data, ManipuAlte is able to analyze text and find patterns that correlate to ulterior motives behind it. Our goal is to equip users with tools to help differentiate between objective truth and false narratives throughout various forms of content.
 
 ## Tech Stack 
 
 ### Programming Language 
 - HTML
+- CSS
 - Javascript
 - Python
   
