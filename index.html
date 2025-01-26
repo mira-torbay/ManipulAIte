@@ -173,7 +173,7 @@
                 .then(data => {
                     var prediction = data.prediction;
                     console.log(prediction);         
-                    displayPredictionHeading(prediction);           
+                    displayPredictionHeading(prediction, "angry", "low openness", "high toxicity",  "[direction]-leaning");           
                     // Check the input text for color conditions
                     if (prediction==1) {
                         document.body.style.backgroundColor = "#ab3044";
