@@ -70,7 +70,6 @@ def logic_test(text):
     
     return {"Contradiction": scores[labels.index("Contradiction")], "Entailment": scores[labels.index("Entailment")]}
 
-
 @app.route('/assess', methods=['GET'])
 def assess():
     user_input = request.args["msg"]
