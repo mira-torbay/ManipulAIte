@@ -1,3 +1,4 @@
+bias_classifier_model_v7/model.safetensors
 venv/
 env/
 .env/
