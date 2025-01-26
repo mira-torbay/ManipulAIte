@@ -1,4 +1,4 @@
-function displayPredictionHeading(prediction, emotion, personality, toxicity, bias, contradiction, entailment) {
+function displayPredictionHeading(prediction, emotion, toxicity, contradiction, entailment) {
     // Remove existing prediction heading if present
     const existingHeading = document.querySelector('.prediction-heading');
     if (existingHeading) {
