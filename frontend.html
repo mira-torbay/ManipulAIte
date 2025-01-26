@@ -45,8 +45,14 @@
             justify-content: center;
             align-items: center;
         }
-
-
+        
+        .large-text {
+        font-size: 2.2em; /* Make the "AI" larger */
+        color: #8c00ff;   /* Highlight color for "AI" */
+        font-weight: bold; /* Optional: bold for emphasis */
+        vertical-align: middle; /* Align the text vertically */
+        }
+        
         h1 {
             font-size: 2em;
             letter-spacing: 1px;
@@ -161,16 +167,19 @@
                 // Check the input text for color conditions
                 if (prediction==1) {
                     document.body.style.backgroundColor = "#ab3044";
+                    document.querySelector(".large-text").style.color = "#ab3044";
                     button.style.backgroundColor = "#6b1e2b";
                     completeMessage.style.color = "#6b1e2b";
                     updateSparkleColor("red");
-                } else if (inputText.toLowerCase().includes("green")) {
+                } else if (prediction==0) {
                     document.body.style.backgroundColor = "#30ab69";
+                    document.querySelector(".large-text").style.color = "#30ab69";
                     button.style.backgroundColor = "#1e6b42";
                     completeMessage.style.color = "#1e6b42";
                     updateSparkleColor("green");
                 } else {
                     document.body.style.backgroundColor = ""; // Keep default background
+                    document.querySelector(".large-text").style.color = "#8c00ff";
                     button.style.backgroundColor = "#8c00ff"; // Reset button color
                     completeMessage.style.color = "#8c00ff"; // Reset message color
                     updateSparkleColor("default");
@@ -217,7 +226,9 @@
     <div class="wrapper">
         <div id="prediction-heading-container"></div>
         <div class="container">
-            <h1>ManipulAIte</h1>
+            <h1>
+                Manipul<span class="large-text">AI</span>te
+            </h1>
             <h2>Attempt to Identify Propaganda and Manipulative Language With AI</h2>
             <textarea id="user-input" rows="4" cols="50" placeholder="Enter your text here"></textarea>
             <button onclick="storeInput()">Assess</button>
