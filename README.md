@@ -19,14 +19,15 @@ ManipulAlte aims to empower users with tools to help differentiate between objec
 - PyTorch
 - Flask
 
-##Bias Detenction AI Training 
+### Bias Detenction AI Training 
 Data based used to train bias detection ai :https://huggingface.co/datasets/shainar/BEAD
-@article{raza2024beads,
-  title={BEADs: Bias Evaluation Across Domains},
-  author={Raza, Shaina and Rahman, Mizanur and Zhang, Michael R},
-  journal={arXiv preprint arXiv:2406.04220},
-  year={2024}
-}
+The verision used was trained using a random samples of 500 data points 
+article = {raza2024beads},
+title={BEADs: Bias Evaluation Across Domains},
+author={Raza, Shaina and Rahman, Mizanur and Zhang, Michael R},
+journal={arXiv preprint arXiv:2406.04220},
+year={2024}
+
 
 
 ## Future Plans
