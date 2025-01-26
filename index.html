@@ -144,7 +144,7 @@
             }
         }
     </style>
-    <script src="{{ url_for('static', filename='js/predictionResult.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/predictionFour.js') }}"></script>
     <script>
         function storeInput() {
             const inputText = document.getElementById('user-input').value;
@@ -198,21 +198,21 @@
                     var toxicity = data[1];
                     var logic_contradiction = data[2].Contradiction;
                     var logic_entailment = data[2].Entailment;
-                    
 
-                    console.log(toxicity);
+                    //console.log(toxicity);
                    // console.log(logic_val);
-                    console.log(label);         
-                    displayPredictionHeading(1,label + ", " + emotion, toxicity, logic_contradiction + ", "+ logic_entailment)
-                    prediction = 1           
+                    //console.log(label);         
+                    prediction = (0.25*emotion + 0.25*toxicity + 0.25*logic_contradiction + 0.25*(1-logic_entailment))
+                    displayPredictionHeading(prediction,label + ", " + emotion, toxicity, logic_contradiction , logic_entailment)
+                    console.log(prediction)
                     // Check the input text for color conditions
-                    if (prediction==1) {
+                    if (prediction >= 0.5) {
                         document.body.style.backgroundColor = "#ab3044";
                         document.querySelector(".large-text").style.color = "#ab3044";
                         button.style.backgroundColor = "#6b1e2b";
                         completeMessage.style.color = "#6b1e2b";
                         updateSparkleColor("red");
-                    } else if (prediction==0) {
+                    } else if (prediction < 0.5) {
                         document.body.style.backgroundColor = "#30ab69";
                         document.querySelector(".large-text").style.color = "#30ab69";
                         button.style.backgroundColor = "#1e6b42";
