@@ -63,6 +63,7 @@ function displayPredictionHeading(prediction, emotion, personality, toxicity, bi
         cornerParagraph.className = 'corner-paragraph';
         cornerParagraph.textContent = paragraphText;
         cornerParagraph.style.margin = '0';
+        cornerParagraph.style.color = 'black'; // Explicitly set paragraph text to black
 
         // Append the heading and paragraph to the corner container
         cornerContainer.appendChild(cornerHeading);
