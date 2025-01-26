@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from transformers import pipeline
-from transformers import BertTokenizer, BertForSequenceClassification
+import torch
+from transformers import BertTokenizer, BertForSequenceClassification, AutoTokenizer, AutoModelForSequenceClassification
 
 app = Flask(__name__)
 
@@ -52,6 +53,58 @@ def process_text():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+def toxicity_test(text): 
+    # Load the tokenizer and model
+    tokenizer = AutoTokenizer.from_pretrained("unitary/toxic-bert")
+    model = AutoModelForSequenceClassification.from_pretrained("unitary/toxic-bert")
+
+    
+
+    # Tokenize the input text
+    inputs = tokenizer(text, return_tensors="pt")
+
+
+    # Make a prediction
+    with torch.no_grad():
+        outputs = model(**inputs)
+        logits = outputs.logits
+
+    # Extract the toxicity score (assuming a single output for toxicity)
+    toxicity_score = logits[0][0].item()  # This should directly give a score between 0 and 1
+
+    # Normalize the toxicity score to be between 0.00 and 1.00
+    min_score = -7.5
+    max_score = 4.5
+    normalized_toxicity_score = (toxicity_score - min_score) / (max_score - min_score)
+
+    # Ensure the score is within the range [0.00, 1.00]
+    normalized_toxicity_score = max(0.0, min(1.0, normalized_toxicity_score))
+
+    return normalized_toxicity_score
+
+def logic_test(text): 
+    
+    # Initialize the zero-shot-classification pipeline with the specified model
+    classifier = pipeline('zero-shot-classification', model='FacebookAI/roberta-large-mnli')
+
+
+    # Define the candidate labels
+    candidate_labels = ['Entailment', 'Neutral', 'Contradiction']
+
+    # Perform classification
+    result = classifier(text, candidate_labels)
+
+    # Display the result
+    print(f"Sequence: {result['sequence']}")
+    for label, score in zip(result['labels'], result['scores']):
+        print(f"{label}: {score:.4f}")
+
+    # Find the label with the highest score
+    max_score = max(result['scores'])
+    max_label = result['labels'][result['scores'].index(max_score)]
+
+    return {"Label": max_label, "Value": max_score}
 
 if __name__ == '__main__':
     app.run(debug=True)
